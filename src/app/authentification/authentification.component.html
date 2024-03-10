@@ -1,0 +1,68 @@
+<div class="parent"> 
+    <div class="container" [ngClass]="isSignDivVisiable ? 'active' :'' " id="container">
+        <div class="form-container sign-up">
+            <form [formGroup]="signUpForm">
+              <h1><b>Créer compte</b></h1>
+              <br>
+              <span>Remplir les champs svp</span>
+              <input type="text" name="nom d'utilisateur" placeholder="Nom d'utilisateur" formControlName="username" autocomplete="off">
+              
+              <div *ngIf="!signUpForm.pristine && signUpForm.controls['username'].errors?.['required']">
+              </div>
+              
+              <div class="text-danger" *ngIf="!signUpForm.pristine && signUpForm.controls['username'].errors?.['minlength']">
+                <span class="mb-0">Le nom d'utilisateur doit avoir au moins 4 caractères</span>
+              </div>
+
+              <input type="text" name="prenom" placeholder="Prénom" formControlName="prenom" autocomplete="off">
+              <div class="text-danger" *ngIf="!signUpForm.pristine && signUpForm.controls['prenom'].errors?.['minlength']">
+                <span class="mb-0">Le prénom doit avoir au moins 3 caractères</span>
+              </div>
+
+              <div class="password-container">
+                <input type="{{ showPassword ? 'text' : 'password' }}" name="mdp" id="password" placeholder="Mot de passe" [(ngModel)]="password" formControlName="mdp">
+                <span class="toggle-password" (click)="basculerVisibiliteMotDePasse()">
+                    <i class="fa" [ngClass]="{'fa-eye': isPasswordVisible(), 'fa-eye-slash': !isPasswordVisible()}" aria-hidden="true"></i>
+                </span> 
+              </div>
+              
+              <div class="text-danger" *ngIf="!signUpForm.pristine && signUpForm.controls['mdp'].errors?.['minlength']">
+                <span class="mb-0">Le mot de passe doit avoir au moins 8 caractères</span>
+              </div>
+              <button [disabled]="signUpForm.invalid" (click)="submitSignUpForm()">S'inscrire</button>
+            </form>
+          </div>
+         
+          
+        <div class="form-container sign-in" >
+            <form>
+                <h1><b>Se connecter</b></h1>
+                <br>
+                <span>Remplir les champs</span>
+                <input type="email" name="nom utilisateur" placeholder="Nom d'utilisateur">
+                <div class="password-container">
+                  <input type="{{ showPassword ? 'text' : 'password' }}" name="mdp" placeholder="Mot de passe" >
+                  <span class="toggle-password" (click)="basculerVisibiliteMotDePasse()">
+                    <i class="fa" [ngClass]="{'fa-eye': isPasswordVisible(), 'fa-eye-slash': !isPasswordVisible()}" aria-hidden="true"></i>
+                  </span>
+                </div>
+                <a href="#">→ Mot de passe oublié? ←</a>
+                <button>Se connecter</button>
+              </form>              
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1><b>Salut!</b></h1>
+                    <p>Entrez vos informations personnelles pour utiliser toutes les fonctionnalités du site</p>
+                    <button type="button" class="hidden" id="login" (click)="isSignDivVisiable = false">Se connecter</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1><b>Salut!</b></h1>
+                    <p>Inscrivez-vous avec vos informations personnelles pour utiliser toutes les fonctionnalités du site</p>
+                    <button type="button" class="hidden" id="register"(click)="isSignDivVisiable = true" >S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

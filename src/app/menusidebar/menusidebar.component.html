@@ -1,0 +1,97 @@
+
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  
+  <div class="sidebar close" [ngClass]="{ 'close': isMenuClosed }">
+    <div class="logo-details" (click)="toggleMenu()">
+      <i class="fa-regular fa-c fa-fade fa-xs" style="color: #74C0FC;"></i>
+
+      <span class="logo_name">CRM</span>
+    </div>
+    <ul class="nav-links" >
+      <li>
+        <a href="#">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">Tableau de bord</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Tableau de bord</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bxs-contact'></i>
+            <span class="link_name">Contact</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Contact</a></li>
+          <li><a href="#">Ajouter contact</a></li>
+          <li><a href="#">Modifier contact</a></li>
+          <li><a href="#">Supprimer contect</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-user'></i>
+            <span class="link_name">Prospects</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Prospects</a></li>
+          <li><a href="#">Ajouter prospect</a></li>
+          <li><a href="#">Modifier prospect</a></li>
+          <li><a href="#">Supprimer prospect</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-task'></i>
+
+          <span class="link_name">Activités</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Activités</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bxs-calendar'></i>
+          <span class="link_name">Calendrier</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Calendrier</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-shield'></i>
+            <span class="link_name">Droits d'aceès</span>
+          </a>
+        </div>
+      </li>
+      
+    
+      <li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <!--<img src="image/profile.jpg" alt="profileImg">-->
+          </div>
+          <div class="name-job">
+            <div class="profile_name">Se déconnecter</div>
+          </div>
+          <i class='bx bx-log-out' ></i>
+        </div>
+  </li>
+</ul>
+  </div>
+  
+  
+
+  
+ 
+
