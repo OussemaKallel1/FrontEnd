@@ -1,0 +1,25 @@
+@import '~typeface-montserrat';
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.main-body {
+    padding-top: 20px;
+    padding-left: 50px;
+    margin: 0 auto;
+    max-width: 1248px;
+    mat-form-field{
+      width: 100%;  
+    }
+}
+
+.modal-title{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-outline-success{
+  width: 100%;
+}

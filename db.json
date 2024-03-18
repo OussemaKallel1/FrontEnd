@@ -1,0 +1,20 @@
+{
+  "clients": [
+    {
+      "nom": "Doem",
+      "prenom": "Johne",
+      "telephone": "12345678",
+      "adresse": "123 rue exemple",
+      "genre": "homme",
+      "id": "1"
+    },
+    {
+      "id": "223d",
+      "nom": "Oussema",
+      "prenom": "Kallel",
+      "telephone": "55391176",
+      "adresse": "route de tunis ",
+      "genre": "homme"
+    }
+  ]
+}

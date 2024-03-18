@@ -1,0 +1,109 @@
+
+<app-nav-bar></app-nav-bar>
+<app-menusidebar></app-menusidebar>
+
+<!-- Button Ajouter client -->
+
+<div class="container"><br>
+    <h1 style="text-align: center;"><b>Liste des clients</b></h1>
+    
+    <button class="btn btn-outline-success" (click)="openAddEditCltForm()"><i class="fa-solid fa-user-plus"></i> Ajouter client</button> <br><br>
+</div>
+
+<div class="main-body">
+
+  <!-- Box Filter -->
+  
+  <mat-form-field>
+    <mat-label>Recherche</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+  
+  
+  <!-- Data Table -->
+  
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- nom Column -->
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+        <td mat-cell *matCellDef="let row"> {{row.nom}}</td>
+      </ng-container>
+  
+      <!-- prenom Column -->
+      <ng-container matColumnDef="prenom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
+        <td mat-cell *matCellDef="let row"> {{row.prenom}}</td>
+      </ng-container>
+  
+      <!-- telephone Column -->
+      <ng-container matColumnDef="telephone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Téléphone </th>
+        <td mat-cell *matCellDef="let row"> {{row.telephone}} </td>
+      </ng-container>
+  
+      <!-- adresse Column -->
+      <ng-container matColumnDef="adresse">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
+        <td mat-cell *matCellDef="let row"> {{row.adresse}} </td>
+      </ng-container>
+  
+      <!-- genre Column -->
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Genre </th>
+        <td mat-cell *matCellDef="let row"> {{row.genre}} </td>
+      </ng-container>
+
+      <!-- action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row"> 
+          <button mat-icon-button color="primary" (click)="openEditCltForm(row)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button mat-icon-button color="warn" (click)="confirmDelete(row)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+
+</div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel" >Confirmation de suppression</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Es-tu sûr de supprimer ce client ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+          <button type="button" class="btn btn-primary" (click)="deleteClient()">Oui</button>
+        </div>
+      </div>
+    </div>
+  </div>
