@@ -1,57 +1,86 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../Services/user.service';
+import { CoreService } from '../core/core.service';
 
 @Component({
   selector: 'app-authentification',
   templateUrl: './authentification.component.html',
-  styleUrls: ['./authentification.component.css']
+  styleUrls: ['./authentification.component.css'],
 })
 export class AuthentificationComponent implements OnInit {
+  signUpForm: FormGroup;
+  isSignDivVisiable: boolean = true;
+  showPassword: boolean = false;
+  
   
 
-constructor(private fb:FormBuilder,private router : Router ){}
-
-isSignDivVisiable: boolean  = true;
-showPassword: boolean = false;
-password: string = ''; // Déclaration de la variable password
-username: string = '';
-prenom: string = '';
-
-basculerVisibiliteMotDePasse(): void {
-  this.showPassword = !this.showPassword;
-}
-
-isPasswordVisible(): boolean {
-  return this.showPassword;
-}
-
-  ngOnInit(): void {
-
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private coreService: CoreService
+  ) {
     this.signUpForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
       prenom: ['', [Validators.required, Validators.minLength(3)]],
-      mdp: ['', [Validators.required, Validators.minLength(6)]]
-    })
+      mdp: ['', [Validators.required, Validators.minLength(8)]],
+    });
+
+    
   }
 
+  basculerVisibiliteMotDePasse(): void {
+    this.showPassword = !this.showPassword;
+  }
 
+  isPasswordVisible(): boolean {
+    return this.showPassword;
+  }
+
+  ngOnInit(): void {}
   
- 
-  signUpForm!: FormGroup;
 
-  errorMessage: string = '';
-  successMessage: string = '';
-
-  submitSignUpForm() {
+  SignUp() {
     if (this.signUpForm.valid) {
-      // Afficher un message de succès si le formulaire est valide
-      this.successMessage = 'Le formulaire a été soumis avec succès.';
-      this.errorMessage = ''; // Effacer le message d'erreur précédent
-    } else {
-      // Afficher un message d'erreur si le formulaire est invalide
-      this.errorMessage = 'Veuillez remplir correctement tous les champs.';
-      this.successMessage = ''; // Effacer le message de succès précédent
+      const userData = this.signUpForm.value;
+      this.userService.createUser(userData).subscribe(
+        (response) => {
+          console.log('Utilisateur enregistré avec succès :', response);
+          this.coreService.openSnackBar('Utilisateur enregistré avec succès');
+          // Réinitialiser le formulaire après l'enregistrement réussi
+          this.signUpForm.reset();
+        },
+        (error) => {
+          
+          console.error(
+            "Erreur lors de l'enregistrement de l'utilisateur :",
+            error
+            
+          );
+        }
+      );
     }
+  }
+
+  usernameSignIn : string =""
+  passwordSignIn : string = ""
+
+   login() {
+    this.userService.verifyCredentials(this.usernameSignIn, this.passwordSignIn)
+      .subscribe(
+        user => {
+          localStorage.setItem("user",JSON.stringify(user));
+         
+          console.log('Connexion réussie');
+          this.router.navigate(['/client']);
+          
+        },
+        error => {
+          
+          console.error('Erreur de connexion');
+        }
+      );
   }
 }

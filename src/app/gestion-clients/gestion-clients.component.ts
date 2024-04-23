@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ClientModéle } from '../client-modéle';
-import { ClientService } from '../client.service';
+import { ClientModéle } from '../Modéles/client-modéle';
+import { ClientService } from '../Services/client.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddClientDialogComponent } from '../add-client-dialog/add-client-dialog.component';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';

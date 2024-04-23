@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ClientService, } from '../client.service';
+import { ClientService, } from '../Services/client.service';
 import { CoreService } from '../core/core.service';
 
 
@@ -69,17 +69,6 @@ onFormSubmit(){
    
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
