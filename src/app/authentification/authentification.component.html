@@ -37,13 +37,13 @@
          
           
         <div class="form-container sign-in" >
-            <form (ngSubmit)="login()">
+            <form [formGroup]="signInForm" (submit)="SignIn()">
                 <h1><b>Se connecter</b></h1>
                 <br>
                 <span>Remplir les champs</span>
-                <input type="text"  placeholder="Nom d'utilisateur" [(ngModel)]="usernameSignIn" name="usernameSignIn">
+                <input type="text"  placeholder="Nom d'utilisateur" formControlName="un" >
                 <div class="password-container">
-                  <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Mot de passe" [(ngModel)]="passwordSignIn" name="passwordSignIn" >
+                  <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Mot de passe" formControlName="pass" >
                   <span class="toggle-password" (click)="basculerVisibiliteMotDePasse()">
                     <i class="fa" [ngClass]="{'fa-eye': isPasswordVisible(), 'fa-eye-slash': !isPasswordVisible()}" aria-hidden="true"></i>
                   </span>
@@ -52,6 +52,7 @@
                 <button type="submit">Se connecter</button>
               </form>              
         </div>
+
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">

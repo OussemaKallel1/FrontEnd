@@ -7,22 +7,21 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/users';
+  private apiUrl = 'http://localhost:4000/auth/signup';
+  private apiUrl1 = 'http://localhost:4000/auth/signin';
 
   constructor(private http: HttpClient) {}
 
-  createUser(user: User): Observable<User> {
+  SignUp(user: User): Observable<User> {
     return this.http.post<User>(this.apiUrl, user);
   }
 
-  login(username: string, password: string): Observable<User> {
-    const url = this.apiUrl + '?username=' + username + '&mdp=' + password;
-    return this.http.get<User>(url);
+  SignIn(username: string, password: string): Observable<User> {
+    
+    return this.http.post<User>(this.apiUrl1, {username, password});
   }
 
-  verifyCredentials(username: string, password: string): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}?username=${username}&password=${password}`);
-  }
+  
 
   
   
