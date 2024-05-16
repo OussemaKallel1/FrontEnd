@@ -5,9 +5,9 @@
 <!-- Button Ajouter client -->
 
 <div class="container"><br>
-    <h1 style="text-align: center;"><b>Liste des clients</b></h1>
+    <h1 style="text-align: center;"><b>Liste des prospects</b></h1>
     
-    <button class="btn btn-outline-success" (click)="openAddEditCltForm()"><i class="fa-solid fa-user-plus"></i> Ajouter client</button> <br><br>
+    <button class="btn btn-outline-success" (click)="openAddEditCltForm()"><i class="fa-solid fa-user-plus"></i> Ajouter prospect</button> <br><br>
 </div>
 
 <div class="main-body">
@@ -54,12 +54,6 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
         <td mat-cell *matCellDef="let row"> {{row.adresse}} </td>
       </ng-container>
-  
-      <!-- genre Column -->
-      <ng-container matColumnDef="genre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Genre </th>
-        <td mat-cell *matCellDef="let row"> {{row.genre}} </td>
-      </ng-container>
 
       <!-- action Column -->
       <ng-container matColumnDef="action">
@@ -102,7 +96,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
-          <button type="button" class="btn btn-primary" (click)="deleteClient()">Oui</button>
+          <button type="button" class="btn btn-primary" (click)="deleteProspect()">Oui</button>
         </div>
       </div>
     </div>

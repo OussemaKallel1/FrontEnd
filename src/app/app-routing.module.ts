@@ -4,7 +4,8 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { MenusidebarComponent } from './menusidebar/menusidebar.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
-import { GestionClientsComponent } from './gestion-clients/gestion-clients.component';
+import { GestionClientsComponent } from './Contacts/gestion-clients.component';
+import { ProspectsComponent } from './prospects/prospects.component';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path: 'footer', component:FooterComponent},
     {path: 'navbar', component:NavBarComponent},
     {path: 'sidebar', component:MenusidebarComponent},
-    {path: 'client', component:GestionClientsComponent}
+    {path: 'contact', component:GestionClientsComponent},
+    {path: 'prospect', component:ProspectsComponent}
     
   
 ];

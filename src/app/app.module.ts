@@ -9,7 +9,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { GestionClientsComponent } from './gestion-clients/gestion-clients.component';
+import { GestionClientsComponent } from './Contacts/gestion-clients.component';
 import { AddClientDialogComponent } from './add-client-dialog/add-client-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -23,6 +23,13 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ProspectsComponent } from './prospects/prospects.component';
+import { AddProspectDialogComponent } from './add-prospect-dialog/add-prospect-dialog.component';
+
+import { MatSelectModule } from '@angular/material/select';
+import { NgToastModule } from 'ng-angular-popup';
+
+
 
 
 @NgModule({
@@ -34,6 +41,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FooterComponent,
     GestionClientsComponent,
     AddClientDialogComponent,
+    ProspectsComponent,
+    AddProspectDialogComponent,
+    
     
     
     
@@ -57,8 +67,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
+    MatSelectModule,
+    NgToastModule,
+   
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

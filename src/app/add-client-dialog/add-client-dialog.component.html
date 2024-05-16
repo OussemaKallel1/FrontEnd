@@ -1,49 +1,80 @@
+
+
 <div mat-dialog-title>
   <h1 style="text-align: center;"><b>Remplir les champs</b></h1>
 </div>
 
 <form [formGroup]="ClientForm" (ngSubmit)="onFormSubmit()">
   <div mat-dialog-content class="content">
-     <div class="column">
-        <mat-form-field appearance="outline">
-          <mat-label>Nom</mat-label>
-          <input matInput type="text" placeholder="Ex. Alex" formControlName="nom">
-        </mat-form-field>
+    <div class="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input matInput type="text" placeholder="Ex. Alex" formControlName="nom">
+        <mat-error
+          *ngIf="ClientForm.get('nom')?.invalid && (ClientForm.get('nom')?.dirty || ClientForm.get('nom')?.touched)">
+          <span *ngIf="ClientForm.get('nom')?.errors?.['required']">Le nom est requis.</span>
+          <span *ngIf="ClientForm.get('nom')?.errors?.['pattern']">Le nom ne doit contenir que des lettres.</span>
+          <span *ngIf="ClientForm.get('nom')?.hasError('minlength')">Le nom doit contenir au moins 3 caractères.</span>
+        </mat-error>
+      </mat-form-field>
 
-        <mat-form-field appearance="outline" class="nom-field">
-          <mat-label>Prénom</mat-label>
-          <input matInput type="text" placeholder="Ex. Smith" formControlName="prenom">
-        </mat-form-field>
-      </div>
-  
- 
-      <div class="column">
-        <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="nom-field">
+        <mat-label>Prénom</mat-label>
+        <input matInput type="text" placeholder="Ex. Smith" formControlName="prenom">
+        <mat-error
+          *ngIf="ClientForm.get('prenom')?.invalid && (ClientForm.get('prenom')?.dirty || ClientForm.get('prenom')?.touched)">
+          <span *ngIf="ClientForm.get('prenom')?.errors?.['required']">Le prénom est requis.</span>
+          <span *ngIf="ClientForm.get('prenom')?.errors?.['pattern']">Le prénom ne doit contenir que des lettres.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <br>
+
+    <div class="column">
+      <mat-form-field appearance="outline">
         <mat-label>Téléphone</mat-label>
-        <input matInput type="tel" placeholder="Ex. 99 854 111" formControlName="telephone">
-        </mat-form-field>
+        <input matInput type="number" id="telephone" placeholder="Ex. 99 854 111" formControlName="telephone">
+        <mat-error
+          *ngIf="ClientForm.get('telephone')?.invalid && (ClientForm.get('telephone')?.dirty || ClientForm.get('telephone')?.touched)">
+          <span *ngIf="ClientForm.get('telephone')?.errors?.['required']">Le numéro de téléphone est requis.</span>
+          <span *ngIf="ClientForm.get('telephone')?.errors?.['pattern']">Le numéro de téléphone doit être composé de 8 à
+            10 chiffres.</span>
+        </mat-error>
+      </mat-form-field>
 
-        <mat-form-field appearance="outline" class="nom-field">
-          <mat-label>Adresse</mat-label>
-          <input matInput type="text" placeholder="Ex. Smith" formControlName="adresse">
-        </mat-form-field>
+      <mat-form-field appearance="outline" class="nom-field">
+        <mat-label>Adresse</mat-label>
+        <input matInput type="text" placeholder="Ex. 123 Rue de la Liberté" formControlName="adresse">
+        <mat-error
+          *ngIf="ClientForm.get('adresse')?.invalid && (ClientForm.get('adresse')?.dirty || ClientForm.get('adresse')?.touched)">
+          <span *ngIf="ClientForm.get('adresse')?.errors?.['required']">L'adresse est requise.</span>
+          <span *ngIf="ClientForm.get('adresse')?.errors?.['minlength']">L'adresse doit contenir au moins 5
+            caractères.</span>
+        </mat-error>
+      </mat-form-field>
       </div>
-  
+      <br> <br>
+
       <div class="column">
-
-        <mat-radio-group aria-label="Select an option" formControlName="genre">
-          <mat-label><b>Genre</b></mat-label>
-          <mat-radio-button value="homme">Homme </mat-radio-button>
-          <mat-radio-button value="femme">Femme</mat-radio-button>
-        </mat-radio-group>
-    
+      <mat-form-field appearance="outline" class="nom-field">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="email" placeholder="Ex. exemple@domaine.com" formControlName="email">
+        <mat-error
+          *ngIf="ClientForm.get('email')?.invalid && (ClientForm.get('email')?.dirty || ClientForm.get('email')?.touched)">
+          <span *ngIf="ClientForm.get('email')?.errors?.['required']">L'email est requis.</span>
+          <span *ngIf="ClientForm.get('email')?.errors?.['email']">L'email n'est pas valide.</span>
+        </mat-error>
+      </mat-form-field>
       </div>
-  </div>
-    
+    </div>
+
+    <br>
+  
+
   <div mat-dialog-actions class="action">
-    
+
     <button mat-raised-button type="button" [mat-dialog-close]="false">Annuler</button>
-    <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Enregistrer'}}</button>
   </div>
 
 </form>

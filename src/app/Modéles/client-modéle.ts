@@ -1,9 +1,10 @@
 export interface ClientModéle {
 
-    id: number;
+  id: number;
   nom: string;
   prenom: string;
   telephone: number;
   adresse: string;
-  genre: string;
+  email: string;
+  
 }
